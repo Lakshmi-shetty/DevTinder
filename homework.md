@@ -1,0 +1,2 @@
+Initialize git
+.gitignore
