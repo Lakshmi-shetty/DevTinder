@@ -20,9 +20,19 @@ app.use('/test', (req, res) => {
 //   res.send({firstName: "Lakshmi", lastName: "Shetty"})
 // });
 
-app.get('/user/:userId/:paswword', (req,res)=>{
+app.get('/user/:userId/:paswword', (req,res, next)=>{
   console.log(req.params);
-  res.send('Fetching the user with dynamic routing')
+  // res.send('Routing Handler 1')
+  next();
+  
+}, (req, res, next) => {
+  console.log("Routing Handler 2")
+  // res.send("Routing Handler 2");
+  next();
+},(req, res, next) => {
+  console.log("Routing Handler 3");
+  // res.send("Routing Handler 3");
+  next();
 })
 app.post('/user', (req, res) => {
   //logic to store a user in db
